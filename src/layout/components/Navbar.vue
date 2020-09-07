@@ -10,8 +10,7 @@
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <!-- <i class="el-icon-caret-bottom" /> -->
-          <span>{{name}}</span>
+          <span class="anticon">{{name}}</span>
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
@@ -132,18 +131,9 @@ export default {
 
         .user-avatar {
           margin-right: 7px;
-          width: 30px;
-          height: 30px;
+          width: 26px;
+          height: 26px;
           border-radius: 50%;
-        }
-
-        .el-icon-caret-bottom {
-          font-size: 12px;
-          // cursor: pointer;
-          // position: absolute;
-          // right: -20px;
-          // top: 25px;
-          // font-size: 12px;
         }
       }
     }
