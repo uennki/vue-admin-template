@@ -1,85 +1,139 @@
 <template>
   <div class="app-container">
-    <el-form ref="form" :model="form" label-width="120px">
-      <el-form-item label="Activity name">
-        <el-input v-model="form.name" />
-      </el-form-item>
-      <el-form-item label="Activity zone">
-        <el-select v-model="form.region" placeholder="please select your zone">
-          <el-option label="Zone one" value="shanghai" />
-          <el-option label="Zone two" value="beijing" />
-        </el-select>
-      </el-form-item>
-      <el-form-item label="Activity time">
-        <el-col :span="11">
-          <el-date-picker v-model="form.date1" type="date" placeholder="Pick a date" style="width: 100%;" />
-        </el-col>
-        <el-col :span="2" class="line">-</el-col>
-        <el-col :span="11">
-          <el-time-picker v-model="form.date2" type="fixed-time" placeholder="Pick a time" style="width: 100%;" />
-        </el-col>
-      </el-form-item>
-      <el-form-item label="Instant delivery">
-        <el-switch v-model="form.delivery" />
-      </el-form-item>
-      <el-form-item label="Activity type">
-        <el-checkbox-group v-model="form.type">
-          <el-checkbox label="Online activities" name="type" />
-          <el-checkbox label="Promotion activities" name="type" />
-          <el-checkbox label="Offline activities" name="type" />
-          <el-checkbox label="Simple brand exposure" name="type" />
-        </el-checkbox-group>
-      </el-form-item>
-      <el-form-item label="Resources">
-        <el-radio-group v-model="form.resource">
-          <el-radio label="Sponsor" />
-          <el-radio label="Venue" />
-        </el-radio-group>
-      </el-form-item>
-      <el-form-item label="Activity form">
-        <el-input v-model="form.desc" type="textarea" />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit">Create</el-button>
-        <el-button @click="onCancel">Cancel</el-button>
-      </el-form-item>
-    </el-form>
+    <pro-form :model="model" :column="column"></pro-form>
   </div>
 </template>
-
 <script>
+import ProForm from "@/components/ProForm";
+
 export default {
+  components: {
+    ProForm
+  },
   data() {
     return {
-      form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
-      }
-    }
+      model: {
+        input: "hello world",
+        number: 200,
+        time: "",
+        date: "",
+        switch: false,
+
+        select: "0",
+        radio: "0",
+        checkbox: ["1"],
+        cascader: ["zhinan", "shejiyuanze", "yizhi"]
+      },
+      column: [
+        {
+          prop: "input",
+          valueType: "input",
+          label: "input",
+          span: 12,
+          placeholder: "请输入具体事项",
+          rules: { required: true, trigger: "blur" }
+        },
+
+        {
+          prop: "time",
+          span: 12,
+          valueType: "time-select",
+          label: "time",
+          placeholder: "请选择时间",
+          rules: { required: true, trigger: "blur" }
+        },
+        {
+          prop: "date",
+          span: 12,
+          valueType: "date-picker",
+          label: "date",
+          type: "date",
+          placeholder: "请选择日期",
+          valueFormat: "yyyy-MM-dd",
+          rules: { required: true, trigger: "blur" }
+        },
+        {
+          prop: "select",
+          span: 12,
+          valueType: "select",
+          label: "select",
+          placeholder: "请选择",
+          options: [
+            { value: "0", label: "beijin" },
+            { value: "1", label: "shanghai" }
+          ]
+        },
+        {
+          prop: "cascader",
+          span: 12,
+          valueType: "cascader",
+          label: "cascader",
+          placeholder: "请选择",
+          options: [
+            {
+              value: "zhinan",
+              label: "指南",
+              children: [
+                {
+                  value: "shejiyuanze",
+                  label: "设计原则",
+                  children: [
+                    { value: "yizhi", label: "一致" },
+                    { value: "fankui", label: "反馈" }
+                  ]
+                },
+                {
+                  value: "daohang",
+                  label: "导航",
+                  children: [
+                    { value: "cexiangdaohang", label: "侧向导航" },
+                    { value: "dingbudaohang", label: "顶部导航" }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          prop: "number",
+          span: 12,
+          valueType: "input-number",
+          label: "input-number",
+          placeholder: "请输入",
+          rules: { required: true, trigger: "blur" }
+        },
+        {
+          prop: "radio",
+          valueType: "radio",
+          label: "radio",
+          placeholder: "请选择",
+          options: [
+            { value: "0", label: "hz" },
+            { value: "1", label: "wh" }
+          ]
+        },
+        {
+          prop: "checkbox",
+          valueType: "checkbox",
+          label: "checkbox",
+          placeholder: "请选择",
+          options: [
+            { label: "libai", value: "1" },
+            { label: "dufu", value: "2" }
+          ]
+        },
+        {
+          prop: "switch",
+          valueType: "switch",
+          label: "switch"
+        }
+      ]
+    };
   },
   methods: {
-    onSubmit() {
-      this.$message('submit!')
-    },
-    onCancel() {
-      this.$message({
-        message: 'cancel!',
-        type: 'warning'
-      })
+    handleClick() {
+      console.log(this.model);
     }
   }
-}
+};
 </script>
-
-<style scoped>
-.line{
-  text-align: center;
-}
-</style>
-

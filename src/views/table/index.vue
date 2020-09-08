@@ -1,6 +1,7 @@
 <template>
   <div class="app-container">
     <ProTable
+      v-loading="loading"
       :column="column"
       :dataSource="dataSource"
       :proTableOn="proTableOn"
@@ -17,6 +18,7 @@ export default {
   components: { ProTable },
   data() {
     return {
+      loading: false,
       proTableOn: {
         "selection-change": (value) => {
           console.log(value);
@@ -78,9 +80,11 @@ export default {
   },
   methods: {
     fetchData() {
+      this.loading = true;
       getList().then((response) => {
         const { data } = response;
         this.dataSource = data.items;
+        this.loading = false;
       });
     },
   },

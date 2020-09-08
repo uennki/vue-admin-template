@@ -1,58 +1,64 @@
 <template>
   <div class="pro-table-wrapper">
     <!-- 表格 -->
-    <el-table :data="dataSource" v-bind="proTableBind" v-on="proTableOn" style="width: 100%">
+    <el-table
+      :data="dataSource"
+      v-bind="proTableBind"
+      v-on="proTableOn"
+      style="width: 100%"
+    >
       <template v-for="(col, index) in column">
         <pro-table-column :options="col" :key="index"></pro-table-column>
       </template>
     </el-table>
 
     <!-- 分页 -->
-    <el-pagination class="el-pagination" v-bind="proPaginationBind" v-on="proPaginationOn"></el-pagination>
+    <el-pagination
+      class="el-pagination"
+      v-bind="proPaginationBind"
+      v-on="proPaginationOn"
+    />
   </div>
 </template>
-
 <script>
 import ProTableColumn from "./ProTableColumn.vue";
-
 export default {
   name: "pro-table",
-  components: { ProTableColumn },
+  components: {
+    ProTableColumn
+  },
   props: {
     /* 表格项 */
     column: Array,
     /* 表格数据 */
     dataSource: Array,
-
     /* 绑定表格属性 */
     proTableBind: {
       type: Object,
-      default: () => ({}),
+      default: () => ({})
     },
     /* 绑定表格事件 */
     proTableOn: {
       type: Object,
-      default: () => ({}),
+      default: () => ({})
     },
-
     /* 绑定分页属性 */
     proPaginationBind: {
       type: Object,
       default: () => ({
         background: true,
         layout: "prev, pager, next",
-        total: 1000,
-      }),
+        total: 1000
+      })
     },
     /* 绑定分页事件 */
     proPaginationOn: {
       type: Object,
-      default: () => ({}),
-    },
-  },
+      default: () => ({})
+    }
+  }
 };
 </script>
-
 <style lang="scss">
 .pro-table-wrapper {
   .el-table-column--selection {
@@ -72,7 +78,6 @@ export default {
   }
 }
 </style>
-
 <style lang="scss" scoped>
 .pro-table-wrapper {
   background-color: #ffffff;
