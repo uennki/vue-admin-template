@@ -47,8 +47,8 @@ export default {
       default: () => []
     },
     rules: {
-      type: Array,
-      default: () => []
+      type: Object,
+      default: () => {}
     },
     model: {
       type: Object,
@@ -90,6 +90,7 @@ export default {
 
 <style lang="scss">
 .pro-form-wrapper {
+  margin-bottom: 24px;
   padding: 28px 24px 9px 24px;
   background-color: #ffffff;
 
