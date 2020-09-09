@@ -10,21 +10,17 @@
           <pro-item :model="model" :options="col" />
         </el-col>
 
-        <el-col :span="span">
+        <el-col :style="{ textAlign: 'right' }" :span="span">
           <el-form-item>
+            <el-button icon="el-icon-refresh" @click="handleReset">
+              Reset
+            </el-button>
             <el-button
               type="primary"
               icon="el-icon-search"
               @click="handleSubmit"
             >
               Search
-            </el-button>
-            <el-button
-              icon="el-icon-refresh"
-              type="primary"
-              @click="handleReset"
-            >
-              Reset
             </el-button>
           </el-form-item>
         </el-col>
@@ -90,7 +86,7 @@ export default {
 
 <style lang="scss">
 .pro-form-wrapper {
-  margin-bottom: 24px;
+  margin-bottom: 14px;
   padding: 28px 24px 9px 24px;
   background-color: #ffffff;
 

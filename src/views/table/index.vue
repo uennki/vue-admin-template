@@ -2,11 +2,18 @@
   <div class="app-container">
     <ProTable
       v-loading="loading"
+      :toolbar="true"
       :column="column"
       :data-source="dataSource"
       :pro-table-on="proTableOn"
       :pro-pagination-on="proPaginationOn"
-    />
+    >
+      <template v-slot:toolbar>
+        <el-button type="primary" size="small" icon="el-icon-plus">
+          新建
+        </el-button>
+      </template>
+    </ProTable>
   </div>
 </template>
 

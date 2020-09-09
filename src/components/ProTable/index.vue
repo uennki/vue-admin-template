@@ -1,6 +1,25 @@
 <template>
-  <div class="pro-table-wrapper">
-    <!-- 表格 -->
+  <div ref="table" class="pro-table-wrapper">
+    <!-- 表格工具栏 -->
+    <div v-if="headerTitle" class="pro-table-bar">
+      <div class="title">{{ headerTitle }}</div>
+      <div class="toolbar">
+        <div :style="{ marginRight: toolbar ? '14px' : '' }">
+          <slot name="toolbar" />
+        </div>
+
+        <div v-if="toolbar" class="toolbar--icon">
+          <el-tooltip class="icon" effect="dark" content="刷新" placement="top">
+            <i class="el-icon-refresh" @click="handleRefresh" />
+          </el-tooltip>
+          <el-tooltip class="icon" effect="dark" content="全屏" placement="top">
+            <i class="el-icon-full-screen" @click="handleFullScreen" />
+          </el-tooltip>
+        </div>
+      </div>
+    </div>
+
+    <!-- 表格主体 -->
     <el-table
       :data="dataSource"
       style="width: 100%"
@@ -12,7 +31,7 @@
       </template>
     </el-table>
 
-    <!-- 分页 -->
+    <!-- 表格分页 -->
     <el-pagination
       class="el-pagination"
       v-bind="proPaginationBind"
@@ -28,6 +47,14 @@ export default {
     ProTableColumn
   },
   props: {
+    headerTitle: {
+      type: String,
+      default: '高级表格'
+    },
+    toolbar: {
+      type: Boolean,
+      default: false
+    },
     /* 表格项 */
     column: {
       type: Array,
@@ -62,6 +89,17 @@ export default {
       type: Object,
       default: () => ({})
     }
+  },
+  methods: {
+    /* 表格刷新 */
+    handleRefresh() {
+      this.$emit('refresh')
+    },
+    /* 表格全屏 */
+    handleFullScreen() {
+      const requestFullscreen = this.$refs['table'].requestFullscreen
+      if (requestFullscreen) requestFullscreen()
+    }
   }
 }
 </script>
@@ -82,14 +120,54 @@ export default {
     font-weight: 500 !important;
     background-color: #fafafa !important;
   }
+
+  .number {
+    font-weight: 400 !important;
+  }
+
+  .number.active {
+    font-weight: 700 !important;
+  }
+
+  .el-input__inner {
+    font-size: 13px !important;
+  }
 }
 </style>
 <style lang="scss" scoped>
 .pro-table-wrapper {
+  overflow: auto;
   background-color: #ffffff;
 
+  .pro-table-bar {
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+
+    .title {
+      font-weight: 500;
+      font-size: 16px;
+      color: rgba(0, 0, 0, 0.85);
+      opacity: 0.85;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        margin-left: 14px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+    }
+  }
+
   .el-pagination {
-    padding: 17px 24px;
+    padding: 18px 24px;
     text-align: right;
   }
 }
