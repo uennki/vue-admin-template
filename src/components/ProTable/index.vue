@@ -3,12 +3,12 @@
     <!-- 表格 -->
     <el-table
       :data="dataSource"
+      style="width: 100%"
       v-bind="proTableBind"
       v-on="proTableOn"
-      style="width: 100%"
     >
       <template v-for="(col, index) in column">
-        <pro-table-column :options="col" :key="index"></pro-table-column>
+        <pro-table-column :key="index" :options="col" />
       </template>
     </el-table>
 
@@ -21,17 +21,23 @@
   </div>
 </template>
 <script>
-import ProTableColumn from "./ProTableColumn.vue";
+import ProTableColumn from './ProTableColumn.vue'
 export default {
-  name: "pro-table",
+  name: 'ProTable',
   components: {
     ProTableColumn
   },
   props: {
     /* 表格项 */
-    column: Array,
+    column: {
+      type: Array,
+      default: () => []
+    },
     /* 表格数据 */
-    dataSource: Array,
+    dataSource: {
+      type: Array,
+      default: () => []
+    },
     /* 绑定表格属性 */
     proTableBind: {
       type: Object,
@@ -47,8 +53,8 @@ export default {
       type: Object,
       default: () => ({
         background: true,
-        layout: "prev, pager, next",
-        total: 1000
+        layout: 'total, prev, pager, next, jumper',
+        total: 100
       })
     },
     /* 绑定分页事件 */
@@ -57,17 +63,17 @@ export default {
       default: () => ({})
     }
   }
-};
+}
 </script>
 <style lang="scss">
 .pro-table-wrapper {
   .el-table-column--selection {
-    /* 覆写ELEMENT　UI表格多选项居中 */
+    /* 覆写ELEMENTUI表格多选项居中 */
     text-align: center !important;
   }
 
   .el-table::before {
-    /* 覆写ELEMENT UI表格最后一行底边样式 */
+    /* 覆写ELEMENTUI表格最后一行底边样式 */
     height: 0px;
   }
 

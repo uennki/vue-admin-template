@@ -1,11 +1,11 @@
 <template>
   <div class="login-container">
-    <el-form 
-      ref="loginForm" 
-      :model="loginForm" 
-      :rules="loginRules" 
-      class="login-form" 
-      auto-complete="off" 
+    <el-form
+      ref="loginForm"
+      :model="loginForm"
+      :rules="loginRules"
+      class="login-form"
+      auto-complete="off"
       label-position="left"
     >
       <div class="title-container">
@@ -14,38 +14,38 @@
 
       <el-form-item prop="username">
         <el-input v-model="loginForm.username" autocomplete="off">
-          <i slot="prefix" class="el-input__icon el-icon-user"></i>
+          <i slot="prefix" class="el-input__icon el-icon-user" />
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input 
-          type="password" 
+        <el-input
+          v-model="loginForm.password"
+          type="password"
           autocomplete="off"
-          v-model="loginForm.password" 
-           @keyup.enter.native="handleLogin"
+          @keyup.enter.native="handleLogin"
         >
-          <i slot="prefix" class="el-input__icon el-icon-lock"></i>
+          <i slot="prefix" class="el-input__icon el-icon-lock" />
         </el-input>
       </el-form-item>
 
-      <el-button 
-        :loading="loading" 
-        type="primary" 
-        style="width:100%;margin-bottom:30px;" 
+      <el-button
+        :loading="loading"
+        type="primary"
+        style="width:100%;margin-bottom:30px;"
         @click.native.prevent="handleLogin"
-      >Login</el-button>
-
+      >
+        Login
+      </el-button>
       <div class="tips">
         <span style="margin-right:20px;">username: admin</span>
         <span> password: any</span>
       </div>
-
     </el-form>
   </div>
 </template>
 
 <script>
-import { validUsername } from '@/utils/validate'
+// import { validUsername } from '@/utils/validate'
 
 export default {
   name: 'Login',
@@ -53,7 +53,7 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '111111'
+        password: '123456'
       },
       loginRules: {
         username: [{ required: true }],
@@ -87,12 +87,15 @@ export default {
       this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true
-          this.$store.dispatch('user/login', this.loginForm).then(() => {
-            this.$router.push({ path: this.redirect || '/' })
-            this.loading = false
-          }).catch(() => {
-            this.loading = false
-          })
+          this.$store
+            .dispatch('user/login', this.loginForm)
+            .then(() => {
+              this.$router.push({ path: this.redirect || '/' })
+              this.loading = false
+            })
+            .catch(() => {
+              this.loading = false
+            })
         } else {
           console.log('error submit!!')
           return false
@@ -104,9 +107,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$bg:#2d3a4b;
-$dark_gray:#889aa4;
-$light_gray:#eee;
+$bg: #2d3a4b;
+$dark_gray: #889aa4;
+$light_gray: #eee;
 
 .login-container {
   min-height: 100%;

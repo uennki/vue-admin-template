@@ -2,12 +2,13 @@
 $menuText:#818fa0;
 $menuActiveText:#ffffff;
 $subMenuActiveText:#f4f4f5; //https://github.com/ElemeFE/element/issues/12951
+$menuTextHover: #ffffff;
 
 $menuBg:#001529;
-$menuHover:#001529;
+$menuHover:#175c9c;
 
-$subMenuBg:#000e1b;
-$subMenuHover:#000e1b;
+$subMenuBg:#010a13;
+$subMenuHover:#175c9c;
 
 $sideBarWidth: 210px;
 
@@ -15,6 +16,7 @@ $sideBarWidth: 210px;
 // https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
 :export {
   menuText: $menuText;
+  menuTextHover: $menuTextHover;
   menuActiveText: $menuActiveText;
   subMenuActiveText: $subMenuActiveText;
   menuBg: $menuBg;

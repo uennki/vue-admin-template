@@ -1,8 +1,11 @@
 <script>
 export default {
-  name: "pro-form-item",
+  name: 'ProFormItem',
   props: {
-    model: Object,
+    model: {
+      type: Object,
+      default: () => {}
+    },
     options: {
       type: Object,
       default: () => ({}),
@@ -10,28 +13,30 @@ export default {
     }
   },
   render: function(h) {
-    let {
+    const {
       valueType,
       label,
       prop,
       rules,
       options = [],
-      width = "100%"
-    } = this.options;
+      width = '100%'
+    } = this.options
 
-    if (valueType === "input") {
+    /* 输入框 */
+    if (valueType === 'input') {
       return (
         <el-form-item label={label} prop={prop} rules={rules}>
           <el-input
             vModel={this.model[prop]}
-            {...{ props: this.options }}
+            {...{ props: this.options, attrs: this.options }}
             style={{ width: width }}
           ></el-input>
         </el-form-item>
-      );
+      )
     }
 
-    if (valueType === "input-number") {
+    /* 数字输入框 */
+    if (valueType === 'input-number') {
       return (
         <el-form-item label={label} prop={prop} rules={rules}>
           <el-input-number
@@ -39,10 +44,11 @@ export default {
             {...{ props: this.options }}
           ></el-input-number>
         </el-form-item>
-      );
+      )
     }
 
-    if (valueType === "time-select") {
+    /* 时间选择框 */
+    if (valueType === 'time-select') {
       return (
         <el-form-item label={label} prop={prop} rules={rules}>
           <el-time-select
@@ -51,10 +57,11 @@ export default {
             {...{ props: this.options }}
           ></el-time-select>
         </el-form-item>
-      );
+      )
     }
 
-    if (valueType === "date-picker") {
+    /* 日期选择框 */
+    if (valueType === 'date-picker') {
       return (
         <el-form-item label={label} prop={prop} rules={rules}>
           <el-date-picker
@@ -63,10 +70,11 @@ export default {
             style={{ width: width }}
           ></el-date-picker>
         </el-form-item>
-      );
+      )
     }
 
-    if (valueType === "cascader") {
+    /* 级联下拉框 */
+    if (valueType === 'cascader') {
       return (
         <el-form-item label={label} prop={prop} rules={rules}>
           <el-cascader
@@ -75,22 +83,11 @@ export default {
             style={{ width: width }}
           ></el-cascader>
         </el-form-item>
-      );
+      )
     }
 
-    if (valueType === "date-picker") {
-      return (
-        <el-form-item label={label} prop={prop} rules={rules}>
-          <el-date-picker
-            vModel={this.model[prop]}
-            {...{ props: this.options }}
-            style={{ width: width }}
-          ></el-date-picker>
-        </el-form-item>
-      );
-    }
-
-    if (valueType === "switch") {
+    /* switch按钮 */
+    if (valueType === 'switch') {
       return (
         <el-form-item label={label} prop={prop} rules={rules}>
           <el-switch
@@ -98,10 +95,11 @@ export default {
             {...{ props: this.options }}
           ></el-switch>
         </el-form-item>
-      );
+      )
     }
 
-    if (valueType === "select") {
+    /* 下拉框 */
+    if (valueType === 'select') {
       return (
         <el-form-item label={label} prop={prop} rules={rules}>
           <el-select
@@ -110,14 +108,15 @@ export default {
             style={{ width: width }}
           >
             {options.map(item => {
-              return <el-option {...{ props: item }}></el-option>;
+              return <el-option {...{ props: item }}></el-option>
             })}
           </el-select>
         </el-form-item>
-      );
+      )
     }
 
-    if (valueType === "radio") {
+    /* 单选框 */
+    if (valueType === 'radio') {
       return (
         <el-form-item label={label} prop={prop} rules={rules}>
           <el-radio-group
@@ -125,15 +124,16 @@ export default {
             {...{ props: this.options }}
           >
             {options.map(item => {
-              const { label, value } = item;
-              return <el-radio label={value}>{label}</el-radio>;
+              const { label, value } = item
+              return <el-radio label={value}>{label}</el-radio>
             })}
           </el-radio-group>
         </el-form-item>
-      );
+      )
     }
 
-    if (valueType === "checkbox") {
+    /* 复选框 */
+    if (valueType === 'checkbox') {
       return (
         <el-form-item label={label} prop={prop} rules={rules}>
           <el-checkbox-group
@@ -141,13 +141,15 @@ export default {
             {...{ props: this.options }}
           >
             {options.map(item => {
-              const { label, value } = item;
-              return <el-checkbox label={value}>{label}</el-checkbox>;
+              const { label, value } = item
+              return <el-checkbox label={value}>{label}</el-checkbox>
             })}
           </el-checkbox-group>
         </el-form-item>
-      );
+      )
     }
+
+    return null
   }
-};
+}
 </script>

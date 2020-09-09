@@ -3,16 +3,16 @@
     <ProTable
       v-loading="loading"
       :column="column"
-      :dataSource="dataSource"
-      :proTableOn="proTableOn"
-      :proPaginationOn="proPaginationOn"
+      :data-source="dataSource"
+      :pro-table-on="proTableOn"
+      :pro-pagination-on="proPaginationOn"
     />
   </div>
 </template>
 
 <script>
-import { getList } from "@/api/table";
-import ProTable from "@/components/ProTable";
+import { getList } from '@/api/table'
+import ProTable from '@/components/ProTable'
 
 export default {
   components: { ProTable },
@@ -20,73 +20,74 @@ export default {
     return {
       loading: false,
       proTableOn: {
-        "selection-change": (value) => {
-          console.log(value);
-        },
+        'selection-change': value => {
+          console.log(value)
+        }
       },
       proPaginationOn: {
-        "current-change": (value) => {
-          console.log(value);
-        },
+        'current-change': value => {
+          console.log(value)
+        }
       },
       dataSource: [
-        { name: "sz", age: 19, birthday: "2001-05-02" },
-        { name: "ls", age: 9, birthday: "2011-08-21" },
-        { name: "ww", age: 29, birthday: "1991-09-13" },
+        { name: 'sz', age: 19, birthday: '2001-05-02' },
+        { name: 'ls', age: 9, birthday: '2011-08-21' },
+        { name: 'ww', age: 29, birthday: '1991-09-13' }
       ],
       column: [
         {
-          type: "selection",
-          width: 55,
+          type: 'selection',
+          width: 55
         },
         {
-          prop: "id",
-          label: "id",
+          prop: 'id',
+          label: 'id'
         },
         {
-          prop: "author",
-          label: "author",
+          prop: 'author',
+          label: 'author'
         },
         {
-          prop: "status",
-          label: "status",
+          prop: 'status',
+          label: 'status'
         },
         {
-          prop: "display_time",
-          label: "display_time",
+          prop: 'display_time',
+          label: 'display_time'
         },
         {
-          label: "操作",
+          label: 'options',
           render: (h, scoped) => {
-            const { row } = scoped;
+            const { row } = scoped
             return h(
-              "el-button",
+              'el-button',
               {
                 props: {
-                  type: "primary",
-                  size: "mini",
+                  type: 'text',
+                  size: 'mini',
+                  icon: 'el-icon-edit'
                 },
-                nativeOn: { click: (e) => console.log(row) },
+                nativeOn: { click: e => console.log(row) }
               },
-              "Edit"
-            );
-          },
-        },
-      ],
-    };
+              'Edit'
+            )
+          }
+        }
+      ]
+    }
   },
   created() {
-    this.fetchData();
+    this.fetchData()
   },
   methods: {
     fetchData() {
-      this.loading = true;
-      getList().then((response) => {
-        const { data } = response;
-        this.dataSource = data.items;
-        this.loading = false;
-      });
-    },
-  },
-};
+      this.loading = true
+      getList().then(response => {
+        const { data } = response
+        this.dataSource = data.items
+        this.loading = false
+      })
+    }
+  }
+}
 </script>

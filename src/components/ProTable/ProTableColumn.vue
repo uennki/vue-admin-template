@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: "pro-table-column",
+  name: 'ProTableColumn',
   props: {
     options: {
       type: Object,
@@ -9,18 +9,20 @@ export default {
     }
   },
   render: function(h) {
-    let { render } = this.options;
-    let scopedSlots = {};
+    const { render } = this.options
+    const scopedSlots = {}
 
     if (render) {
       /* 绑定作用域 */
-      scopedSlots.default = scoped => render(h, scoped);
+      scopedSlots.default = scoped => render(h, scoped)
     }
 
-    return h("el-table-column", {
-      props: this.options,
-      scopedSlots
-    });
+    return (
+      <el-table-column
+        {...{ props: this.options }}
+        scopedSlots={scopedSlots}
+      ></el-table-column>
+    )
   }
-};
+}
 </script>
