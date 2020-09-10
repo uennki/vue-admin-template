@@ -5,6 +5,7 @@
       :column="column"
       :button-group-span="12"
       @submit="handleSubmit"
+      @reset="handleReset"
     />
   </div>
 </template>
@@ -133,9 +134,11 @@ export default {
     }
   },
   methods: {
-    handleSubmit(val) {
-      console.log('$on:', val)
-      console.log('model:', this.model)
+    handleSubmit() {
+      console.log('submit:', this.model)
+    },
+    handleReset() {
+      console.log('reset', this.model)
     }
   }
 }

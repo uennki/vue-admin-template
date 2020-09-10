@@ -80,11 +80,11 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$emit('submit', this.model)
+      this.$emit('submit')
     },
     handleReset() {
-      console.log(this.$refs['form'])
       this.$refs['form'].resetFields()
+      this.$emit('reset')
     },
     handleValidate() {
       this.$refs['form'].validate(valid => {
