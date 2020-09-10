@@ -1,6 +1,6 @@
 <template>
   <div class="app-container">
-    <pro-form :model="model" :column="column" />
+    <ProForm :model="model" :column="column" />
   </div>
 </template>
 <script>
@@ -29,7 +29,7 @@ export default {
           prop: 'input',
           valueType: 'input',
           label: 'input',
-          placeholder: '请输入具体事项',
+          placeholder: '请输入',
           rules: { required: true, trigger: 'blur' }
         },
         {

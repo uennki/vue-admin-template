@@ -8,7 +8,7 @@
       :pro-table-on="proTableOn"
       :pro-pagination-on="proPaginationOn"
     >
-      <template v-slot:toolbar>
+      <template v-slot:extra>
         <el-button type="primary" size="small" icon="el-icon-plus">
           新建
         </el-button>

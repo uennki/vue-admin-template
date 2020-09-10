@@ -3,12 +3,12 @@
     <!-- 表格工具栏 -->
     <div v-if="headerTitle" class="pro-table-bar">
       <div class="title">{{ headerTitle }}</div>
-      <div class="toolbar">
+      <div class="extra">
         <div :style="{ marginRight: toolbar ? '14px' : '' }">
-          <slot name="toolbar" />
+          <slot name="extra" />
         </div>
 
-        <div v-if="toolbar" class="toolbar--icon">
+        <div v-if="toolbar" class="toolbar">
           <el-tooltip class="icon" effect="dark" content="刷新" placement="top">
             <i class="el-icon-refresh" @click="handleRefresh" />
           </el-tooltip>
@@ -97,8 +97,10 @@ export default {
     },
     /* 表格全屏 */
     handleFullScreen() {
-      const requestFullscreen = this.$refs['table'].requestFullscreen
-      if (requestFullscreen) requestFullscreen()
+      const tableElement = this.$refs['table']
+      if (tableElement.requestFullscreen) {
+        tableElement.requestFullscreen()
+      }
     }
   }
 }
@@ -154,7 +156,7 @@ export default {
       opacity: 0.85;
     }
 
-    .toolbar {
+    .extra {
       display: flex;
       align-items: center;
 

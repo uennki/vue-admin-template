@@ -63,6 +63,14 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.app-breadcrumb {
+  .el-breadcrumb__separator {
+      font-weight: 400 !important;
+  }
+}
+</style>
+
 <style lang="scss" scoped>
 .app-breadcrumb.el-breadcrumb {
   display: inline-block;

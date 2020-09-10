@@ -9,13 +9,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  // font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  font-size: 14px;
   font-family: -apple-system, BlinkMacSystemFont, segoe ui, Roboto,
-    helvetica neue, Arial, noto sans, sans-serif, apple color emoji,
-    segoe ui emoji, segoe ui symbol, noto color emoji;
+      helvetica neue, Arial, noto sans, sans-serif, apple color emoji,
+      segoe ui emoji, segoe ui symbol, noto color emoji;
+  color: rgba(0,0,0,.85);
 }
 
 label {
-  font-weight: 700;
+  // font-weight: 700;
 }
 
 html {

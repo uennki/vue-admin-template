@@ -1,16 +1,16 @@
 <template>
   <div class="navbar">
     <div class="left-menu">
-    <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
+      <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
-    <breadcrumb class="breadcrumb-container" />
+      <breadcrumb class="breadcrumb-container" />
     </div>
 
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <span class="anticon">{{name}}</span>
+          <span class="anticon">{{ name }}</span>
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
           <router-link to="/">
@@ -47,7 +47,7 @@ export default {
     ...mapGetters([
       'sidebar',
       'avatar',
-      'name',
+      'name'
     ])
   },
   methods: {

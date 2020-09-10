@@ -87,12 +87,12 @@ export default {
 <style lang="scss">
 .pro-form-wrapper {
   margin-bottom: 14px;
-  padding: 28px 24px 9px 24px;
+  padding: 28px 24px 12px 24px;
   background-color: #ffffff;
 
   .el-form-item__label {
     color: rgba(0, 0, 0, 0.85) !important;
-    font-weight: 500 !important;
+    // font-weight: 400 !important;
   }
 }
 </style>
