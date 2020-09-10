@@ -1,6 +1,11 @@
 <template>
   <div>
-    <ProForm :model="model" :column="column" @submit="handleSubmit" />
+    <ProForm
+      :model="model"
+      :column="column"
+      :button-group-span="12"
+      @submit="handleSubmit"
+    />
   </div>
 </template>
 <script>

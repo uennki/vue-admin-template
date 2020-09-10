@@ -12,8 +12,8 @@
 
         <el-col
           v-if="buttonGroup"
-          class="button-group"
           :span="buttonGroupSpan || span"
+          :style="{ textAlign: buttonGroupAlign }"
         >
           <el-form-item>
             <el-button icon="el-icon-refresh" @click="handleReset">
@@ -62,6 +62,10 @@ export default {
       type: Number,
       default: 0
     },
+    buttonGroupAlign: {
+      type: String,
+      default: 'right'
+    },
     buttonGroup: {
       type: Boolean,
       default: true
@@ -101,9 +105,5 @@ export default {
   // margin-bottom: 14px;
   padding: 28px 24px 10px 24px;
   background-color: #ffffff;
-
-  .button-group {
-    text-align: left;
-  }
 }
 </style>
