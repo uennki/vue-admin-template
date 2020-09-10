@@ -1,13 +1,15 @@
 <template>
   <div ref="table" class="pro-table-wrapper">
-    <!-- 表格工具栏 -->
+    <!-- 工具栏 -->
     <div v-if="headerTitle" class="pro-table-bar">
       <div class="title">{{ headerTitle }}</div>
       <div class="extra">
+        <!-- 按钮插槽 -->
         <div :style="{ marginRight: toolbar ? '14px' : '' }">
           <slot name="extra" />
         </div>
 
+        <!-- 内置工具栏 -->
         <div v-if="toolbar" class="toolbar">
           <el-tooltip class="icon" effect="dark" content="刷新" placement="top">
             <i class="el-icon-refresh" @click="handleRefresh" />
@@ -27,7 +29,7 @@
       v-on="proTableOn"
     >
       <template v-for="(col, index) in column">
-        <pro-table-column :key="index" :options="col" />
+        <ProTableColumn :key="index" :options="col" />
       </template>
     </el-table>
 
@@ -40,7 +42,7 @@
   </div>
 </template>
 <script>
-import ProTableColumn from './ProTableColumn.vue'
+import ProTableColumn from './ProTableColumn'
 export default {
   name: 'ProTable',
   components: {

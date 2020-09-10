@@ -7,7 +7,7 @@
           :key="index"
           :span="col.span || span"
         >
-          <pro-item :model="model" :options="col" />
+          <ProFormItem :model="model" :options="col" />
         </el-col>
 
         <el-col
@@ -34,12 +34,12 @@
 </template>
 
 <script>
-import ProItem from './ProItem.vue'
+import ProFormItem from './ProFormItem'
 
 export default {
   name: 'ProForm',
   components: {
-    ProItem
+    ProFormItem
   },
   props: {
     column: {
