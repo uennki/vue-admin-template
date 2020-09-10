@@ -46,14 +46,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.pro-card {
-  .el-card__header {
-    padding: 14px 24px !important;
-  }
-}
-</style>
-
 <style lang="scss" scoped>
 .pro-card {
   .header {

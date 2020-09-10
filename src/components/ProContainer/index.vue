@@ -12,6 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 .pro-container-wrapper {
+  margin-bottom: 24px;
   padding: 24px;
   background-color: #ffffff;
 }

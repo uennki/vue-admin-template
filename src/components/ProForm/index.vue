@@ -10,7 +10,7 @@
           <pro-item :model="model" :options="col" />
         </el-col>
 
-        <el-col :style="{ textAlign: 'right' }" :span="span">
+        <el-col class="button-group" :span="buttonGroupSpan || span">
           <el-form-item>
             <el-button icon="el-icon-refresh" @click="handleReset">
               Reset
@@ -52,7 +52,11 @@ export default {
     },
     span: {
       type: Number,
-      default: 8
+      default: 6
+    },
+    buttonGroupSpan: {
+      type: Number,
+      default: 0
     },
     proFormBind: {
       type: Object,
@@ -84,15 +88,14 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .pro-form-wrapper {
-  margin-bottom: 14px;
-  padding: 28px 24px 12px 24px;
+  // margin-bottom: 14px;
+  padding: 28px 24px 10px 24px;
   background-color: #ffffff;
 
-  .el-form-item__label {
-    color: rgba(0, 0, 0, 0.85) !important;
-    // font-weight: 400 !important;
+  .button-group {
+    text-align: left;
   }
 }
 </style>

@@ -93,6 +93,7 @@ export default {
   methods: {
     /* 表格刷新 */
     handleRefresh() {
+      console.log('refresh')
       this.$emit('refresh')
     },
     /* 表格全屏 */
@@ -105,37 +106,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.pro-table-wrapper {
-  .el-table-column--selection {
-    /* 覆写ELEMENTUI表格多选项居中 */
-    text-align: center !important;
-  }
 
-  .el-table::before {
-    /* 覆写ELEMENTUI表格最后一行底边样式 */
-    height: 0px;
-  }
-
-  .el-table th {
-    color: rgba(0, 0, 0, 0.85) !important;
-    font-weight: 500 !important;
-    background-color: #fafafa !important;
-  }
-
-  .number {
-    font-weight: 400 !important;
-  }
-
-  .number.active {
-    font-weight: 700 !important;
-  }
-
-  .el-input__inner {
-    font-size: 13px !important;
-  }
-}
-</style>
 <style lang="scss" scoped>
 .pro-table-wrapper {
   overflow: auto;

@@ -1,6 +1,6 @@
 <template>
-  <div class="app-container">
-    <ProForm :model="model" :column="column" />
+  <div>
+    <ProForm :model="model" :column="column" :button-group-span="6" />
   </div>
 </template>
 <script>
@@ -45,6 +45,13 @@ export default {
           type: 'date',
           placeholder: '请选择日期',
           valueFormat: 'yyyy-MM-dd'
+        },
+        {
+          prop: 'date',
+          valueType: 'date-picker',
+          label: 'dateTime',
+          type: 'datetime',
+          placeholder: '请选择日期时间'
         },
         {
           prop: 'select',
@@ -111,11 +118,11 @@ export default {
         //     { label: "libai", value: "1" },
         //     { label: "dufu", value: "2" }
         //   ]
-        // }
+        // },
         // {
-        //   prop: "switch",
-        //   valueType: "switch",
-        //   label: "switch"
+        //   prop: 'switch',
+        //   valueType: 'switch',
+        //   label: 'switch'
         // }
       ]
     }

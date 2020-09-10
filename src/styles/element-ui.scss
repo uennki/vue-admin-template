@@ -6,7 +6,7 @@
 }
 
 .el-upload {
-  input[type="file"] {
+  input[type='file'] {
     display: none !important;
   }
 }
@@ -14,7 +14,6 @@
 .el-upload__input {
   display: none;
 }
-
 
 // to fixed https://github.com/ElemeFE/element/issues/2461
 .el-dialog {
@@ -39,11 +38,63 @@
 // dropdown
 .el-dropdown-menu {
   a {
-    display: block
+    display: block;
   }
 }
 
 // to fix el-date-picker css style
 .el-range-separator {
   box-sizing: content-box;
+}
+
+/* 覆写分割线样式 */
+.el-divider {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+.el-form {
+  .el-form-item__label {
+    color: rgba(0, 0, 0, 0.85) !important;
+  }
+}
+
+/* 覆写Table样式 */
+.el-table {
+  th {
+    color: rgba(0, 0, 0, 0.85) !important;
+    font-weight: 500 !important;
+    background-color: #fafafa !important;
+  }
+
+  &::before {
+    /* 覆写ELEMENTUI表格最后一行底边样式 */
+    height: 0px;
+  }
+
+  .el-table-column--selection {
+    /* 覆写ELEMENTUI表格多选项居中 */
+    text-align: center !important;
+  }
+}
+
+/* 覆写分页样式 */
+.el-pagination {
+  .number {
+    font-weight: 400 !important;
+  }
+
+  .number.active {
+    font-weight: 700 !important;
+  }
+
+  .el-input__inner {
+    font-size: 13px !important;
+  }
+}
+
+/* 覆写Card样式 */
+.el-card {
+  .el-card__header {
+    padding: 14px 24px;
+  }
 }
