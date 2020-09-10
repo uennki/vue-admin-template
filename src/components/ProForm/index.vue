@@ -10,7 +10,11 @@
           <pro-item :model="model" :options="col" />
         </el-col>
 
-        <el-col class="button-group" :span="buttonGroupSpan || span">
+        <el-col
+          v-if="buttonGroup"
+          class="button-group"
+          :span="buttonGroupSpan || span"
+        >
           <el-form-item>
             <el-button icon="el-icon-refresh" @click="handleReset">
               Reset
@@ -58,6 +62,10 @@ export default {
       type: Number,
       default: 0
     },
+    buttonGroup: {
+      type: Boolean,
+      default: true
+    },
     proFormBind: {
       type: Object,
       default: () => ({
@@ -68,7 +76,7 @@ export default {
   },
   methods: {
     handleSubmit() {
-      console.log(this.model)
+      this.$emit('submit', this.model)
     },
     handleReset() {
       console.log(this.$refs['form'])

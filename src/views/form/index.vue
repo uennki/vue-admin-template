@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProForm :model="model" :column="column" :button-group-span="6" />
+    <ProForm :model="model" :column="column" @submit="handleSubmit" />
   </div>
 </template>
 <script>
@@ -47,7 +47,7 @@ export default {
           valueFormat: 'yyyy-MM-dd'
         },
         {
-          prop: 'date',
+          prop: 'dateTime',
           valueType: 'date-picker',
           label: 'dateTime',
           type: 'datetime',
@@ -128,8 +128,9 @@ export default {
     }
   },
   methods: {
-    handleClick() {
-      console.log(this.model)
+    handleSubmit(val) {
+      console.log('$on:', val)
+      console.log('model:', this.model)
     }
   }
 }

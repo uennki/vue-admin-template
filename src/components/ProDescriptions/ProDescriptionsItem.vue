@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .descriptions-item {
-  line-height: 36px;
+  line-height: 38px;
   background-color: #ffffff;
 
   /* 单行省略 */
