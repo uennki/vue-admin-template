@@ -31,7 +31,7 @@ export default {
 <style lang="scss" scoped>
 .pro-descriptions-wrapper {
   // padding: 32px 24px 32px 24px;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   padding-top: 4px;
   background-color: #ffffff;
   overflow: hidden;
