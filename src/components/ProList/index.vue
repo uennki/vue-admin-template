@@ -25,7 +25,7 @@ export default {
   background-color: #ffffff;
 
   .list-title {
-    margin-bottom: 14px;
+    margin-bottom: 32px;
   }
 
   .list-content {

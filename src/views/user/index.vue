@@ -8,26 +8,23 @@
       />
     </div>
     <div class="content">
-      <ProList title="个人信息">
-        <ProListItem>123</ProListItem>
-        <ProListItem>123</ProListItem>
-        <ProListItem>123</ProListItem>
-      </ProList>
-      <!-- <component v-bind:is="currentTabComponent"></component> -->
+      <component :is="currentTabMenuComponent" />
     </div>
   </div>
 </template>
 
 <script>
 import ProTabMenu from '@/components/ProTabMenu'
-import ProList from '@/components/ProList'
-import ProListItem from '@/components/ProList/ProListItem'
+import Account from './components/Account'
+import Safe from './components/Safe'
+import Setting from './components/Setting'
 
 export default {
   components: {
     ProTabMenu,
-    ProList,
-    ProListItem
+    Setting,
+    Safe,
+    Account
   },
   data() {
     return {
@@ -39,9 +36,23 @@ export default {
       ]
     }
   },
+  computed: {
+    currentTabMenuComponent: function() {
+      switch (this.active) {
+        case '0':
+          return Setting
+        case '1':
+          return Safe
+        case '2':
+          return Account
+        default:
+          return null
+      }
+    }
+  },
   methods: {
     handleMeneSelect(active) {
-      console.log(active)
+      this.active = active
     }
   }
 }
