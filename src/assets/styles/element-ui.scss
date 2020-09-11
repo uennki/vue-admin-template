@@ -52,6 +52,7 @@
   background-color: rgba(0, 0, 0, 0.06);
 }
 
+/* 覆写Form样式 */
 .el-form {
   .el-form-item__label {
     color: rgba(0, 0, 0, 0.85) !important;
@@ -61,8 +62,8 @@
 /* 覆写Table样式 */
 .el-table {
   th {
-    color: rgba(0, 0, 0, 0.85) !important;
     font-weight: 500 !important;
+    color: rgba(0, 0, 0, 0.85) !important;
     background-color: #fafafa !important;
   }
 
