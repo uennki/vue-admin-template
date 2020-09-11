@@ -48,7 +48,7 @@ export default {
   props: {
     defaultCollapse: {
       type: Boolean,
-      default: true
+      default: false
     },
     column: {
       type: Array,
@@ -91,7 +91,7 @@ export default {
       collapse: this.defaultCollapse,
       arrowUp: 'el-icon-arrow-up',
       arrowDown: 'el-icon-arrow-down',
-      length: 3
+      length: 4
     }
   },
   computed: {

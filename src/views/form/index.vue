@@ -6,17 +6,51 @@
       @submit="handleSubmit"
       @reset="handleReset"
     />
+    <br />
+    <TableSuper :data-source="dataSource" @select-change="handleSelectChange">
+      <template v-slot:extra="{ scoped }">
+        <el-button type="text" size="small" @click="() => handleClick(scoped)">
+          编辑
+        </el-button>
+        <el-divider direction="vertical" />
+        <el-button type="text" size="small">删除</el-button>
+        <el-divider direction="vertical" />
+        <el-button type="text" size="small">关闭</el-button>
+      </template>
+    </TableSuper>
   </div>
 </template>
 <script>
 import ProForm from '@/components/ProForm'
+import TableSuper from '@/components/TableSuper'
 
 export default {
   components: {
-    ProForm
+    ProForm,
+    TableSuper
   },
   data() {
     return {
+      dataSource: [
+        {
+          id: 1,
+          code: 'DCK20200911345',
+          amount: 5000,
+          user: '李白',
+          payTime: '2020-09-11 17:39',
+          deliverTime: '2020-09-11 21:20',
+          note: ''
+        },
+        {
+          id: 2,
+          code: 'DCK20200911346',
+          amount: 2300,
+          user: '杜甫',
+          payTime: '2020-09-11 12:32',
+          deliverTime: '2020-09-11 21:20',
+          note: ''
+        }
+      ],
       model: {
         input: '',
         time: '',
@@ -138,6 +172,12 @@ export default {
     },
     handleReset() {
       console.log('reset', this.model)
+    },
+    handleSelectChange(val) {
+      console.log(val)
+    },
+    handleClick(row) {
+      console.log(row)
     }
   }
 }
