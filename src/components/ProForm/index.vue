@@ -1,5 +1,6 @@
 <template>
   <div class="pro-form-wrapper">
+    {{ buttonGroupSpanComputed }}
     <el-form ref="form" :model="model" :rules="rules" v-bind="proFormBind">
       <el-row :gutter="16">
         <el-col
@@ -12,15 +13,15 @@
 
         <el-col
           v-if="showButtonGroup"
-          :span="buttonGroupSpan || span"
+          :span="buttonGroupSpanComputed"
           :style="{ textAlign: buttonGroupAlign }"
         >
           <el-form-item>
             <el-button @click="handleReset">
-              重置
+              Reset
             </el-button>
             <el-button type="primary" @click="handleSubmit">
-              查询
+              Search
             </el-button>
             <el-button
               v-if="showCollapse"
@@ -97,13 +98,13 @@ export default {
   computed: {
     collapseText: function() {
       if (this.collapse) {
-        return '收起'
+        return 'Close'
       } else {
-        return '展开'
+        return 'Open'
       }
     },
     showCollapse: function() {
-      return this.column.length > this.length
+      return this.column.length >= this.length
     },
     iconComputed: function() {
       if (this.collapse) {
@@ -117,6 +118,19 @@ export default {
         return this.column
       } else {
         return this.column.slice(0, this.length - 1)
+      }
+    },
+    buttonGroupSpanComputed: function() {
+      const total = this.columnComputed.length * this.span
+      const len = 24
+      let span = 24
+      if (total > len) span = total % len
+      if (total < len) span = len % total
+
+      if (span === 0) {
+        return len - total
+      } else {
+        return span
       }
     }
   },

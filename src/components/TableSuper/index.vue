@@ -9,29 +9,29 @@
           </div>
           <div>
             <div>
-              <span class="title">订单编号 : </span>
+              <span class="title">Order Code : </span>
               <span class="text">{{ item.code }}</span>
             </div>
             <div>
-              <span class="title">订单金额 : </span>
+              <span class="title">Order Amount : </span>
               <span class="text">{{ item.amount }}</span>
             </div>
             <div>
-              <span class="title">收件人 : </span>
+              <span class="title">Recipient : </span>
               <span class="text">{{ item.user }}</span>
             </div>
           </div>
           <div>
             <div>
-              <span class="title">下单时间 : </span>
+              <span class="title">Order Time : </span>
               <span class="text">{{ item.payTime }}</span>
             </div>
             <div>
-              <span class="title">发货时间 : </span>
+              <span class="title">Delivery Time : </span>
               <span class="text">{{ item.deliverTime }}</span>
             </div>
             <div>
-              <span class="title">备注 : </span>
+              <span class="title">Note : </span>
               <span class="text">{{ item.note }}</span>
             </div>
           </div>
