@@ -3,7 +3,7 @@
     <el-form ref="form" :model="model" :rules="rules" v-bind="proFormBind">
       <el-row :gutter="16">
         <el-col
-          v-for="(col, index) in column"
+          v-for="(col, index) in columnComputed"
           :key="index"
           :span="col.span || span"
         >
@@ -11,20 +11,28 @@
         </el-col>
 
         <el-col
-          v-if="buttonGroup"
+          v-if="showButtonGroup"
           :span="buttonGroupSpan || span"
           :style="{ textAlign: buttonGroupAlign }"
         >
           <el-form-item>
             <el-button icon="el-icon-refresh" @click="handleReset">
-              Reset
+              重置
             </el-button>
             <el-button
               type="primary"
               icon="el-icon-search"
               @click="handleSubmit"
             >
-              Search
+              查询
+            </el-button>
+            <el-button
+              v-if="showCollapse"
+              :icon="iconComputed"
+              type="text"
+              @click="handleCollapse"
+            >
+              {{ collapseText }}
             </el-button>
           </el-form-item>
         </el-col>
@@ -42,6 +50,10 @@ export default {
     ProFormItem
   },
   props: {
+    defaultCollapse: {
+      type: Boolean,
+      default: true
+    },
     column: {
       type: Array,
       default: () => []
@@ -66,7 +78,7 @@ export default {
       type: String,
       default: 'right'
     },
-    buttonGroup: {
+    showButtonGroup: {
       type: Boolean,
       default: true
     },
@@ -78,7 +90,44 @@ export default {
       })
     }
   },
+  data: function() {
+    return {
+      collapse: this.defaultCollapse,
+      arrowUp: 'el-icon-arrow-up',
+      arrowDown: 'el-icon-arrow-down',
+      length: 3
+    }
+  },
+  computed: {
+    collapseText: function() {
+      if (this.collapse) {
+        return '收起'
+      } else {
+        return '展开'
+      }
+    },
+    showCollapse: function() {
+      return this.column.length > this.length
+    },
+    iconComputed: function() {
+      if (this.collapse) {
+        return this.arrowUp
+      } else {
+        return this.arrowDown
+      }
+    },
+    columnComputed: function() {
+      if (this.collapse) {
+        return this.column
+      } else {
+        return this.column.slice(0, this.length - 1)
+      }
+    }
+  },
   methods: {
+    handleCollapse() {
+      this.collapse = !this.collapse
+    },
     handleSubmit() {
       this.$emit('submit')
     },
