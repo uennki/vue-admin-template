@@ -3,7 +3,6 @@
     <ProForm
       :model="model"
       :column="column"
-      :button-group-span="12"
       @submit="handleSubmit"
       @reset="handleReset"
     />

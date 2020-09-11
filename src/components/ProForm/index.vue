@@ -16,14 +16,10 @@
           :style="{ textAlign: buttonGroupAlign }"
         >
           <el-form-item>
-            <el-button icon="el-icon-refresh" @click="handleReset">
+            <el-button @click="handleReset">
               重置
             </el-button>
-            <el-button
-              type="primary"
-              icon="el-icon-search"
-              @click="handleSubmit"
-            >
+            <el-button type="primary" @click="handleSubmit">
               查询
             </el-button>
             <el-button
