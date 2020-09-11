@@ -1,15 +1,15 @@
 <template>
   <div ref="table" class="pro-table-wrapper">
-    <!-- 工具栏 -->
+    <!-- 标题栏 -->
     <div v-if="headerTitle" class="pro-table-bar">
-      <div class="title">{{ headerTitle }}</div>
+      <h3 class="title">{{ headerTitle }}</h3>
+
+      <!-- 工具区 -->
       <div class="extra">
-        <!-- 按钮插槽 -->
         <div :style="{ marginRight: toolbar ? '14px' : '' }">
           <slot name="extra" />
         </div>
 
-        <!-- 内置工具栏 -->
         <div v-if="toolbar" class="toolbar">
           <el-tooltip class="icon" effect="dark" content="刷新" placement="top">
             <i class="el-icon-refresh" @click="handleRefresh" />

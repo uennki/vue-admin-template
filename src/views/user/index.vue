@@ -8,7 +8,11 @@
       />
     </div>
     <div class="content">
-      123
+      <ProList title="个人信息">
+        <ProListItem>123</ProListItem>
+        <ProListItem>123</ProListItem>
+        <ProListItem>123</ProListItem>
+      </ProList>
       <!-- <component v-bind:is="currentTabComponent"></component> -->
     </div>
   </div>
@@ -16,10 +20,14 @@
 
 <script>
 import ProTabMenu from '@/components/ProTabMenu'
+import ProList from '@/components/ProList'
+import ProListItem from '@/components/ProList/ProListItem'
 
 export default {
   components: {
-    ProTabMenu
+    ProTabMenu,
+    ProList,
+    ProListItem
   },
   data() {
     return {
@@ -51,7 +59,7 @@ export default {
   }
 
   .content {
-    padding: 24px 32px;
+    padding: 0 32px;
     flex: 1;
   }
 }

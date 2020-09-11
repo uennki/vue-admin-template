@@ -34,6 +34,8 @@ export default {
 
 <style lang="scss">
 .pro-tab-menu {
+  height: 100%;
+
   .el-menu-item {
     display: flex;
     align-items: center;
