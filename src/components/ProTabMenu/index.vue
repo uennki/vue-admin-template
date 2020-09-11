@@ -40,8 +40,8 @@ export default {
     display: flex;
     align-items: center;
     margin: 6px 0;
-    height: 40px;
-    line-height: 40px;
+    height: 50px;
+    line-height: 50px;
   }
 
   .el-menu-item:hover {
