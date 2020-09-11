@@ -1,5 +1,6 @@
 <template>
   <el-menu
+    class="pro-tab-menu"
     mode="vertical"
     :default-active="defaultActive"
     @select="handleMeneSelect"
@@ -32,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss">
-.user-wrapper {
+.pro-tab-menu {
   .el-menu-item {
     display: flex;
     align-items: center;
@@ -40,6 +41,7 @@ export default {
     height: 40px;
     line-height: 40px;
   }
+
   .el-menu-item:hover {
     background-color: #fff;
     color: #409eff;

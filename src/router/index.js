@@ -85,6 +85,12 @@ export const constantRoutes = [
         name: 'Card',
         component: () => import('@/views/card/index'),
         meta: { title: 'Card', icon: 'nested' }
+      },
+      {
+        path: 'skeleton',
+        name: 'Skeleton',
+        component: () => import('@/views/skeleton/index'),
+        meta: { title: 'Skeleton', icon: 'nested' }
       }
     ]
   },
