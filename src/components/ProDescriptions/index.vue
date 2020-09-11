@@ -1,6 +1,6 @@
 <template>
   <div class="pro-descriptions-wrapper">
-    <div v-if="title" class="descriptions-title">{{ title }}</div>
+    <h3 v-if="title" class="descriptions-title">{{ title }}</h3>
     <el-row class="descriptions-content" :gutter="24">
       <slot />
     </el-row>
@@ -37,10 +37,10 @@ export default {
   overflow: hidden;
 
   .descriptions-title {
-    font-size: 16px;
-    letter-spacing: 1px;
-    padding-bottom: 16px;
-    font-weight: 700;
+    // font-size: 16px;
+    // letter-spacing: 1px;
+    // padding-bottom: 16px;
+    // font-weight: 700;
   }
 
   .descriptions-content {
