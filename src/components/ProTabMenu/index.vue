@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import { Divider } from 'element-ui'
 export default {
   name: 'ProTabMenu',
   props: {

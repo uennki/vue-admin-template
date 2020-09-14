@@ -1,11 +1,16 @@
 <template>
   <div class="table-super-wrapper">
-    <div v-if="title" class="table-header">{{ title }}</div>
+    <div v-if="title" class="table-header">
+      {{ title }}
+    </div>
     <div class="table-content">
       <template v-for="(item, index) in dataSource">
         <div :key="index" class="table-row">
           <div class="checkbox">
-            <el-checkbox @change="val => handleCheckboxChange(val, item)" />
+            <el-checkbox
+              v-model="item.checkbox"
+              @change="val => handleCheckboxChange(val, item)"
+            />
           </div>
           <div>
             <div>
