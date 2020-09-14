@@ -43,11 +43,7 @@
 
           <!-- 按钮组 -->
           <div>
-            <el-button type="text" size="small">编辑</el-button>
-            <el-divider direction="vertical" />
-            <el-button type="text" size="small">删除</el-button>
-            <el-divider direction="vertical" />
-            <el-button type="text" size="small">关闭</el-button>
+            <slot name="extra" v-bind="item" />
           </div>
         </div>
       </template>

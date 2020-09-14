@@ -7,7 +7,17 @@
       @reset="handleReset"
     />
     <br />
-    <TableSuper :data-source="dataSource" @select-change="handleSelectChange" />
+    <TableSuper :data-source="dataSource" @select-change="handleSelectChange">
+      <template v-slot:extra="scoped">
+        <el-button type="text" size="small" @click="() => handleClick(scoped)">
+          编辑
+        </el-button>
+        <el-divider direction="vertical" />
+        <el-button type="text" size="small">删除</el-button>
+        <el-divider direction="vertical" />
+        <el-button type="text" size="small">关闭</el-button>
+      </template>
+    </TableSuper>
 
     <el-dialog title="dialog-title" :visible.sync="dialogVisible" width="35%">
       <ProForm
@@ -37,7 +47,7 @@ export default {
   },
   data() {
     return {
-      dialogVisible: true,
+      dialogVisible: false,
       dataSource: [
         {
           id: 1,
@@ -193,10 +203,12 @@ export default {
       console.log(val)
     },
     handleClick(row) {
+      this.dialogVisible = true
       console.log(row)
     },
     handleSure() {
-      console.log(this.$refs['pro-form'].handleValidate())
+      const validate = this.$refs['pro-form'].handleValidate()
+      if (validate) this.dialogVisible = false
     }
   }
 }
