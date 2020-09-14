@@ -1,6 +1,7 @@
 <template>
   <div>
     <ProForm
+      class="form"
       :model="model"
       :column="column"
       @submit="handleSubmit"
@@ -215,3 +216,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.form {
+  padding: 28px 24px 10px 24px;
+}
+</style>

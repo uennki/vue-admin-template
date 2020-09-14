@@ -70,28 +70,22 @@ export default {
     /* 绑定表格属性 */
     proTableBind: {
       type: Object,
-      default: () => ({})
+      default: () => {}
     },
     /* 绑定表格事件 */
     proTableOn: {
       type: Object,
-      default: () => ({})
+      default: () => {}
     },
     /* 绑定分页属性 */
     proPaginationBind: {
       type: Object,
-      default: () => {
-        return {
-          background: true,
-          layout: 'total, prev, pager, next, jumper',
-          total: 100
-        }
-      }
+      default: () => {}
     },
     /* 绑定分页事件 */
     proPaginationOn: {
       type: Object,
-      default: () => ({})
+      default: () => {}
     }
   },
   computed: {

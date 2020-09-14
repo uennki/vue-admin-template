@@ -1,6 +1,11 @@
 <template>
   <div class="pro-form-wrapper">
-    <el-form ref="form" :model="model" :rules="rules" v-bind="proFormBind">
+    <el-form
+      ref="form"
+      :model="model"
+      :rules="rules"
+      v-bind="proFormBindComputed"
+    >
       <el-row :gutter="16">
         <!-- 表单组件 -->
         <el-col
@@ -82,10 +87,7 @@ export default {
     },
     proFormBind: {
       type: Object,
-      default: () => ({
-        labelWidth: '80px',
-        size: 'small'
-      })
+      default: () => {}
     }
   },
   data: function() {
@@ -97,6 +99,14 @@ export default {
     }
   },
   computed: {
+    proFormBindComputed: function() {
+      const defaultValue = {
+        labelWidth: '80px',
+        size: 'small',
+        inline: false
+      }
+      return { ...defaultValue, ...this.proFormBind }
+    },
     collapseText: function() {
       if (this.collapse) {
         return '收起'
@@ -169,7 +179,7 @@ export default {
 <style lang="scss" scoped>
 .pro-form-wrapper {
   // margin-bottom: 14px;
-  padding: 28px 24px 10px 24px;
+  // padding: 28px 24px 10px 24px;
   background-color: #ffffff;
 }
 </style>
