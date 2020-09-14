@@ -30,8 +30,10 @@
       />
 
       <span slot="footer">
-        <el-button>取 消</el-button>
-        <el-button type="primary" @click="handleSure">确 定</el-button>
+        <el-button size="small">取 消</el-button>
+        <el-button type="primary" size="small" @click="handleSure">
+          确 定
+        </el-button>
       </span>
     </el-dialog>
   </div>
