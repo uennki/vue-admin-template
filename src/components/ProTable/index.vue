@@ -36,7 +36,7 @@
     <!-- 表格分页 -->
     <el-pagination
       class="el-pagination"
-      v-bind="proPaginationBind"
+      v-bind="proPaginationBindComputed"
       v-on="proPaginationOn"
     />
   </div>
@@ -80,16 +80,28 @@ export default {
     /* 绑定分页属性 */
     proPaginationBind: {
       type: Object,
-      default: () => ({
-        background: true,
-        layout: 'total, prev, pager, next, jumper',
-        total: 100
-      })
+      default: () => {
+        return {
+          background: true,
+          layout: 'total, prev, pager, next, jumper',
+          total: 100
+        }
+      }
     },
     /* 绑定分页事件 */
     proPaginationOn: {
       type: Object,
       default: () => ({})
+    }
+  },
+  computed: {
+    proPaginationBindComputed: function(val, val2) {
+      const defaultSetting = {
+        background: true,
+        layout: 'total, prev, pager, next, jumper',
+        total: 100
+      }
+      return { ...defaultSetting, ...this.proPaginationBind }
     }
   },
   methods: {

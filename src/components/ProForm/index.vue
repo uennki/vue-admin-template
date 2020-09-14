@@ -19,10 +19,10 @@
         >
           <el-form-item>
             <el-button @click="handleReset">
-              Reset
+              重置
             </el-button>
             <el-button type="primary" @click="handleSubmit">
-              Search
+              查询
             </el-button>
             <el-button
               v-if="showCollapse"
@@ -99,9 +99,9 @@ export default {
   computed: {
     collapseText: function() {
       if (this.collapse) {
-        return 'Close'
+        return '收起'
       } else {
-        return 'Open'
+        return '展开'
       }
     },
     showCollapse: function() {
