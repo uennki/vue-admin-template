@@ -35,8 +35,14 @@
               <span class="text">{{ item.note }}</span>
             </div>
           </div>
+
+          <!-- 按钮组 -->
           <div>
-            <slot name="extra" :scoped="item" />
+            <el-button type="text" size="small">编辑</el-button>
+            <el-divider direction="vertical" />
+            <el-button type="text" size="small">删除</el-button>
+            <el-divider direction="vertical" />
+            <el-button type="text" size="small">关闭</el-button>
           </div>
         </div>
       </template>

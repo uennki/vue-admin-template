@@ -5,13 +5,31 @@
     :default-active="defaultActive"
     @select="handleMeneSelect"
   >
-    <el-menu-item v-for="item in options" :key="item.value" :index="item.value">
-      <span slot="title">{{ item.label }}</span>
-    </el-menu-item>
+    <template v-for="item in options">
+      <!-- 有子菜单 -->
+      <el-submenu v-if="item.children" :key="item.value" :index="item.value">
+        <template slot="title">
+          <span>{{ item.label }}</span>
+        </template>
+        <el-menu-item
+          v-for="child in item.children"
+          :key="child.value"
+          :index="child.value"
+        >
+          {{ child.label }}
+        </el-menu-item>
+      </el-submenu>
+
+      <!-- 无子菜单 -->
+      <el-menu-item v-else :key="item.value" :index="item.value">
+        <span slot="title">{{ item.label }}</span>
+      </el-menu-item>
+    </template>
   </el-menu>
 </template>
 
 <script>
+import { Divider } from 'element-ui'
 export default {
   name: 'ProTabMenu',
   props: {
@@ -42,6 +60,10 @@ export default {
     margin: 6px 0;
     height: 50px;
     line-height: 50px;
+  }
+
+  .el-submenu__title:hover {
+    background-color: rgb(230, 247, 255);
   }
 
   .el-menu-item:hover {

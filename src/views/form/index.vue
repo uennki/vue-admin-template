@@ -7,17 +7,7 @@
       @reset="handleReset"
     />
     <br />
-    <TableSuper :data-source="dataSource" @select-change="handleSelectChange">
-      <template v-slot:extra="{ scoped }">
-        <el-button type="text" size="small" @click="() => handleClick(scoped)">
-          编辑
-        </el-button>
-        <el-divider direction="vertical" />
-        <el-button type="text" size="small">删除</el-button>
-        <el-divider direction="vertical" />
-        <el-button type="text" size="small">关闭</el-button>
-      </template>
-    </TableSuper>
+    <TableSuper :data-source="dataSource" @select-change="handleSelectChange" />
   </div>
 </template>
 <script>

@@ -32,7 +32,14 @@ export default {
       options: [
         { label: '基本设置', value: '0' },
         { label: '安全设置', value: '1' },
-        { label: '账号绑定', value: '2' }
+        {
+          label: '账号绑定',
+          value: '2',
+          children: [
+            { label: '微信', value: '2-1' },
+            { label: 'QQ', value: '2-2' }
+          ]
+        }
       ]
     }
   },
