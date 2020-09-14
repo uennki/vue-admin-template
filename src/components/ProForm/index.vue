@@ -1,8 +1,8 @@
 <template>
   <div class="pro-form-wrapper">
-    {{ buttonGroupSpanComputed }}
     <el-form ref="form" :model="model" :rules="rules" v-bind="proFormBind">
       <el-row :gutter="16">
+        <!-- 表单组件 -->
         <el-col
           v-for="(col, index) in columnComputed"
           :key="index"
@@ -11,6 +11,7 @@
           <ProFormItem :model="model" :options="col" />
         </el-col>
 
+        <!-- 按钮组 -->
         <el-col
           v-if="showButtonGroup"
           :span="buttonGroupSpanComputed"
@@ -123,15 +124,16 @@ export default {
     buttonGroupSpanComputed: function() {
       const total = this.columnComputed.length * this.span
       const len = 24
-      let span = 24
-      if (total > len) span = total % len
-      if (total < len) span = len % total
-
-      if (span === 0) {
-        return len - total
-      } else {
-        return span
+      let span
+      if (total > len) {
+        span = total % len
+        return 24 - span
       }
+      if (len > total) {
+        span = len % total
+        return span || len - total
+      }
+      return 24
     }
   },
   methods: {
