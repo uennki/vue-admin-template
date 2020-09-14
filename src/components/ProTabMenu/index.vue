@@ -62,7 +62,8 @@ export default {
   }
 
   .el-submenu__title:hover {
-    background-color: rgb(230, 247, 255);
+    background-color: #ffffff;
+    color: #409eff;
   }
 
   .el-menu-item:hover {

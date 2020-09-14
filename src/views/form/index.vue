@@ -8,6 +8,22 @@
     />
     <br />
     <TableSuper :data-source="dataSource" @select-change="handleSelectChange" />
+
+    <el-dialog title="dialog-title" :visible.sync="dialogVisible" width="35%">
+      <ProForm
+        ref="pro-form"
+        :default-collapse="true"
+        :show-button-group="false"
+        :span="24"
+        :model="model"
+        :column="column"
+      />
+
+      <span slot="footer">
+        <el-button>取 消</el-button>
+        <el-button type="primary" @click="handleSure">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -21,6 +37,7 @@ export default {
   },
   data() {
     return {
+      dialogVisible: true,
       dataSource: [
         {
           id: 1,
@@ -73,6 +90,15 @@ export default {
           label: 'date',
           type: 'date',
           placeholder: '请选择日期',
+          valueFormat: 'yyyy-MM-dd'
+        },
+        {
+          prop: 'daterange',
+          valueType: 'date-picker',
+          type: 'daterange',
+          label: 'daterange',
+          startPlaceholder: '开始日期',
+          endPlaceholder: '结束日期',
           valueFormat: 'yyyy-MM-dd'
         },
         {
@@ -168,6 +194,9 @@ export default {
     },
     handleClick(row) {
       console.log(row)
+    },
+    handleSure() {
+      console.log(this.$refs['pro-form'].handleValidate())
     }
   }
 }

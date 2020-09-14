@@ -148,14 +148,19 @@ export default {
       this.$emit('reset')
     },
     handleValidate() {
+      let pass
       this.$refs['form'].validate(valid => {
         if (valid) {
+          pass = true
           console.log('success!')
+          return true
         } else {
+          pass = false
           console.log('error submit!!')
           return false
         }
       })
+      return pass
     }
   }
 }
