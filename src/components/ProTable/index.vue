@@ -1,25 +1,39 @@
 <template>
   <div ref="table" class="pro-table-wrapper">
     <!-- 标题栏 -->
-    <div class="pro-table-bar" :style="proTableBarStyleComputed">
-      <h3 v-if="headerTitle" class="title">{{ headerTitle }}</h3>
+    <el-row class="pro-table-bar" :style="proTableBarStyleComputed">
+      <el-col :span="12">
+        <span v-if="headerTitle" class="title">{{ headerTitle }}</span>
+      </el-col>
 
       <!-- 工具区 -->
-      <div class="extra">
-        <div :style="{ marginRight: toolbar ? '14px' : '' }">
-          <slot name="extra" />
-        </div>
+      <el-col :span="headerTitle ? 12 : 24">
+        <div class="extra">
+          <div :style="{ marginRight: toolbar ? '14px' : '' }">
+            <slot name="extra" />
+          </div>
 
-        <div v-if="toolbar" class="toolbar">
-          <el-tooltip class="icon" effect="dark" content="刷新" placement="top">
-            <i class="el-icon-refresh" @click="handleRefresh" />
-          </el-tooltip>
-          <el-tooltip class="icon" effect="dark" content="全屏" placement="top">
-            <i class="el-icon-full-screen" @click="handleFullScreen" />
-          </el-tooltip>
+          <div v-if="toolbar" class="toolbar">
+            <el-tooltip
+              class="icon"
+              effect="dark"
+              content="刷新"
+              placement="top"
+            >
+              <i class="el-icon-refresh" @click="handleRefresh" />
+            </el-tooltip>
+            <el-tooltip
+              class="icon"
+              effect="dark"
+              content="全屏"
+              placement="top"
+            >
+              <i class="el-icon-full-screen" @click="handleFullScreen" />
+            </el-tooltip>
+          </div>
         </div>
-      </div>
-    </div>
+      </el-col>
+    </el-row>
 
     <!-- 表格主体 -->
     <el-table
@@ -154,6 +168,8 @@ export default {
     .extra {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
+      overflow: hidden;
 
       .icon {
         margin-left: 14px;

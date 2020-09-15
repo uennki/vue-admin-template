@@ -48,7 +48,14 @@ export default {
         },
         {
           prop: 'id',
-          label: 'id'
+          label: 'id',
+          render: (h, scoped) => {
+            const { row } = scoped
+            const input = (
+              <el-input v-model={row.id} placeholder="请输入" size="mini" />
+            )
+            return [input]
+          }
         },
         {
           prop: 'author',
