@@ -106,15 +106,6 @@ export default {
           valueFormat: 'yyyy-MM-dd'
         },
         {
-          prop: 'daterange',
-          valueType: 'date-picker',
-          type: 'daterange',
-          label: 'daterange',
-          startPlaceholder: '开始日期',
-          endPlaceholder: '结束日期',
-          valueFormat: 'yyyy-MM-dd'
-        },
-        {
           prop: 'dateTime',
           valueType: 'date-picker',
           label: 'dateTime',
@@ -160,6 +151,15 @@ export default {
               ]
             }
           ]
+        },
+        {
+          prop: 'daterange',
+          valueType: 'date-picker',
+          type: 'daterange',
+          label: 'daterange',
+          startPlaceholder: '开始日期',
+          endPlaceholder: '结束日期',
+          valueFormat: 'yyyy-MM-dd'
         }
         // {
         //   prop: "number",

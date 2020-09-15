@@ -1,8 +1,8 @@
 <template>
   <div ref="table" class="pro-table-wrapper">
     <!-- 标题栏 -->
-    <div v-if="headerTitle" class="pro-table-bar">
-      <h3 class="title">{{ headerTitle }}</h3>
+    <div class="pro-table-bar" :style="proTableBarStyleComputed">
+      <h3 v-if="headerTitle" class="title">{{ headerTitle }}</h3>
 
       <!-- 工具区 -->
       <div class="extra">
@@ -49,6 +49,10 @@ export default {
     ProTableColumn
   },
   props: {
+    proTableBarStyle: {
+      type: Object,
+      default: () => {}
+    },
     headerTitle: {
       type: String,
       default: '高级表格'
@@ -89,7 +93,19 @@ export default {
     }
   },
   computed: {
-    proPaginationBindComputed: function(val, val2) {
+    proTableBarStyleComputed: function() {
+      const defaultStyle = {
+        padding: '0 24px',
+        height: '64px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: '#ffffff'
+      }
+
+      return { ...defaultStyle, ...this.proTableBarStyle }
+    },
+    proPaginationBindComputed: function() {
       const defaultSetting = {
         background: true,
         layout: 'total, prev, pager, next, jumper',
@@ -121,12 +137,12 @@ export default {
   background-color: #ffffff;
 
   .pro-table-bar {
-    padding: 0 24px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff;
+    // padding: 0 24px;
+    // height: 64px;
+    // display: flex;
+    // align-items: center;
+    // justify-content: space-between;
+    // background-color: #ffffff;
 
     .title {
       font-weight: 500;

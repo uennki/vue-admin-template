@@ -101,7 +101,7 @@ export default {
   computed: {
     proFormBindComputed: function() {
       const defaultValue = {
-        labelWidth: '80px',
+        labelWidth: '90px',
         size: 'small',
         inline: false
       }
