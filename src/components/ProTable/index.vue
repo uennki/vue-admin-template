@@ -42,8 +42,8 @@
       v-bind="proTableBind"
       v-on="proTableOn"
     >
-      <template v-for="(col, index) in column">
-        <ProTableColumn :key="index" :options="col" />
+      <template v-for="(row, index) in column">
+        <ProTableColumn :key="index" :row="row" />
       </template>
     </el-table>
 

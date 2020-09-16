@@ -87,6 +87,12 @@ export const constantRoutes = [
         meta: { title: 'Card', icon: 'nested' }
       },
       {
+        path: 'form-table',
+        name: 'FormTable',
+        component: () => import('@/views/formTable/index'),
+        meta: { title: 'FormTable', icon: 'nested' }
+      },
+      {
         path: 'skeleton',
         name: 'Skeleton',
         component: () => import('@/views/skeleton/index'),

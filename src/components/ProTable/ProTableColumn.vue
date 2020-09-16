@@ -2,24 +2,24 @@
 export default {
   name: 'ProTableColumn',
   props: {
-    options: {
+    row: {
       type: Object,
       default: () => ({}),
       required: true
     }
   },
   render: function(h) {
-    const { render } = this.options
+    const { render } = this.row
     const scopedSlots = {}
 
+    /* 绑定作用域 */
     if (render) {
-      /* 绑定作用域 */
       scopedSlots.default = scoped => render(h, scoped)
     }
 
     return (
       <el-table-column
-        {...{ props: this.options }}
+        {...{ props: this.row }}
         scopedSlots={scopedSlots}
       ></el-table-column>
     )
