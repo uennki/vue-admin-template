@@ -34,6 +34,7 @@ export default {
       proPaginationOn: {
         'current-change': value => {
           console.log(value)
+          this.fetchData()
         }
       },
       dataSource: [

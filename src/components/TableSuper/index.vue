@@ -1,5 +1,6 @@
 <template>
   <div class="table-super-wrapper">
+    <!-- 表格头 -->
     <div class="table-header">
       <div v-if="headerTitle" class="header-title">{{ headerTitle }}</div>
       <div class="header-toolbar">
@@ -10,13 +11,16 @@
     <div class="table-content">
       <template v-for="(item, index) in dataSource">
         <div :key="index" class="table-row">
-          <div class="checkbox">
+          <!-- 第一列 -->
+          <div class="checkbox table-col">
             <el-checkbox
               v-model="item.checkbox"
               @change="val => handleCheckboxChange(val, item)"
             />
           </div>
-          <div>
+
+          <!-- 第二列 -->
+          <div class="table-col">
             <div>
               <span class="title">Order Code : </span>
               <span class="text">{{ item.code }}</span>
@@ -30,7 +34,9 @@
               <span class="text">{{ item.user }}</span>
             </div>
           </div>
-          <div>
+
+          <!-- 第三列 -->
+          <div class="table-col">
             <div>
               <span class="title">Order Time : </span>
               <span class="text">{{ item.payTime }}</span>
@@ -45,8 +51,8 @@
             </div>
           </div>
 
-          <!-- 按钮组 -->
-          <div>
+          <!-- 第四列-按钮组 -->
+          <div class="table-col">
             <slot name="extra" v-bind="item" />
           </div>
         </div>
