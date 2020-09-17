@@ -1,8 +1,12 @@
 <template>
   <div class="table-super-wrapper">
-    <div v-if="title" class="table-header">
-      {{ title }}
+    <div class="table-header">
+      <div v-if="headerTitle" class="header-title">{{ headerTitle }}</div>
+      <div class="header-toolbar">
+        <slot name="toolbar" />
+      </div>
     </div>
+
     <div class="table-content">
       <template v-for="(item, index) in dataSource">
         <div :key="index" class="table-row">
@@ -59,7 +63,7 @@
 export default {
   name: 'TableSuper',
   props: {
-    title: {
+    headerTitle: {
       type: String,
       default: 'Table Title'
     },
@@ -106,10 +110,14 @@ export default {
   background-color: #ffffff;
 
   .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     padding: 0 24px;
     height: 64px;
-    line-height: 64px;
     border-bottom: 1px solid #ebeef5;
+    overflow: hidden;
   }
 
   .table-content {

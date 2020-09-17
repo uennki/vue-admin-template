@@ -9,6 +9,10 @@
     />
     <br />
     <TableSuper :data-source="dataSource" @select-change="handleSelectChange">
+      <template v-slot:toolbar>
+        <el-button size="mini">消息</el-button>
+      </template>
+
       <template v-slot:extra="scoped">
         <el-button type="text" size="small" @click="() => handleClick(scoped)">
           编辑
