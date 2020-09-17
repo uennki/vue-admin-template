@@ -54,7 +54,10 @@
     </div>
 
     <div class="table-pagination">
-      <el-pagination v-bind="proPaginationBind" v-on="proPaginationOn" />
+      <el-pagination
+        v-bind="proPaginationBindComputed"
+        v-on="proPaginationOn"
+      />
     </div>
   </div>
 </template>
@@ -74,11 +77,7 @@ export default {
     /* 绑定分页属性 */
     proPaginationBind: {
       type: Object,
-      default: () => ({
-        background: true,
-        layout: 'total, prev, pager, next, jumper',
-        total: 100
-      })
+      default: () => ({})
     },
     /* 绑定分页事件 */
     proPaginationOn: {
@@ -89,6 +88,16 @@ export default {
   data: function() {
     return {
       select: []
+    }
+  },
+  computed: {
+    proPaginationBindComputed: function() {
+      const defaultSetting = {
+        background: true,
+        layout: 'total, prev, pager, next, jumper',
+        total: 100
+      }
+      return { ...defaultSetting, ...this.proPaginationBind }
     }
   },
   methods: {
