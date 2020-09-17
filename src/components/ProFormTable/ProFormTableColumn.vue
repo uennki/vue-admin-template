@@ -64,18 +64,36 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.pro-form-table-tbody {
+  .el-form-item {
+    margin-bottom: 0 !important;
+  }
+
+  .el-form-item__content {
+    font-size: 13px !important;
+  }
+
+  .el-form-item__error {
+    color: #f56c6c;
+    font-size: 12px;
+    line-height: 1;
+    padding-top: 4px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+  }
+}
+</style>
 <style lang="scss" scoped>
 .pro-form-table-tbody {
   .tr {
     border-bottom: 1px solid #ebeef5;
-    height: 64px;
+    height: 50px;
 
     .td {
       padding: 0 14px;
-
-      .el-form-item {
-        margin-bottom: 0 !important;
-      }
     }
   }
 }

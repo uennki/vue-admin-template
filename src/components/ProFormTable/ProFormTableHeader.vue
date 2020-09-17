@@ -36,10 +36,13 @@ export default {
 
 <style lang="scss" scoped>
 .pro-form-table-thead {
+  font-weight: 500 !important;
+  color: rgba(0, 0, 0, 0.85);
+  background-color: #fafafa;
+  border-bottom: 1px solid #ebeef5;
+
   .tr {
     height: 50px;
-    background-color: #fafafa;
-    border-bottom: 1px solid #ebeef5;
 
     .th {
       padding: 0 14px;
