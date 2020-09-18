@@ -1,8 +1,8 @@
 <template>
   <div class="table-super-wrapper">
     <!-- 表格头 -->
-    <div class="table-header">
-      <div v-if="headerTitle" class="header-title">{{ headerTitle }}</div>
+    <div v-if="title || slotToolbar" class="table-header">
+      <div v-if="title" class="header-title">{{ title }}</div>
       <div class="header-toolbar">
         <slot name="toolbar" />
       </div>
@@ -12,12 +12,16 @@
       <template v-for="(item, index) in dataSource">
         <div :key="index" class="table-row">
           <!-- 第一列 -->
-          <div class="checkbox table-col">
+          <div v-if="checkbox" class="checkbox table-col">
             <el-checkbox
               v-model="item.checkbox"
               @change="val => handleCheckboxChange(val, item)"
             />
           </div>
+
+          <!-- <template v-for="(col, colIndex) in column">
+            <div class="table-col" :key="colIndex"></div>
+          </template> -->
 
           <!-- 第二列 -->
           <div class="table-col">
@@ -69,12 +73,21 @@
 </template>
 
 <script>
+const col = new Map([{}])
 export default {
   name: 'TableSuper',
   props: {
-    headerTitle: {
+    title: {
       type: String,
       default: 'Table Title'
+    },
+    checkbox: {
+      type: Boolean,
+      default: true
+    },
+    column: {
+      type: Array,
+      default: () => []
     },
     dataSource: {
       type: Array,
@@ -97,6 +110,9 @@ export default {
     }
   },
   computed: {
+    slotToolbar: function() {
+      return this.$slots.toolbar
+    },
     proPaginationBindComputed: function() {
       const defaultSetting = {
         background: true,
@@ -125,14 +141,15 @@ export default {
   background-color: #ffffff;
 
   .table-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
     padding: 0 24px;
     height: 64px;
+    line-height: 64px;
     border-bottom: 1px solid #ebeef5;
     overflow: hidden;
+
+    .header-toolbar {
+      text-align: right;
+    }
   }
 
   .table-content {
