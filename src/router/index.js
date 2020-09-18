@@ -97,6 +97,12 @@ export const constantRoutes = [
         name: 'Skeleton',
         component: () => import('@/views/skeleton/index'),
         meta: { title: 'Skeleton', icon: 'nested' }
+      },
+      {
+        path: 'editor',
+        name: 'Editor',
+        component: () => import('@/views/editor/index'),
+        meta: { title: 'Editor', icon: 'nested' }
       }
     ]
   },

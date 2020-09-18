@@ -1,7 +1,11 @@
 <template>
   <div ref="table" class="pro-table-wrapper">
     <!-- 标题栏 -->
-    <el-row class="pro-table-bar" :style="proTableBarStyleComputed">
+    <el-row
+      v-if="headerTitle || toolbar || slotExtra"
+      class="pro-table-bar"
+      :style="proTableBarStyleComputed"
+    >
       <el-col :span="12">
         <span v-if="headerTitle" class="title">{{ headerTitle }}</span>
       </el-col>
@@ -126,7 +130,14 @@ export default {
         total: 100
       }
       return { ...defaultSetting, ...this.proPaginationBind }
+    },
+    slotExtra: function() {
+      const slot = this.$slots.extra
+      return slot
     }
+  },
+  mounted() {
+    console.log(this.$slots.extra)
   },
   methods: {
     /* 表格刷新 */

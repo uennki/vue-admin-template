@@ -12,7 +12,7 @@
 
     <el-divider />
 
-    <ProDescriptions title="订单详情">
+    <ProDescriptions title="基本信息">
       <ProDescriptionsItem label="订单编号">No20200910332</ProDescriptionsItem>
       <ProDescriptionsItem label="订单数量">2000</ProDescriptionsItem>
       <ProDescriptionsItem label="订单金额">150000</ProDescriptionsItem>
