@@ -1,41 +1,20 @@
 <template>
   <div ref="table" class="pro-table-wrapper">
-    <!-- 标题栏 -->
     <el-row
-      v-if="headerTitle || toolbar || slotExtra"
+      v-if="title || slotExtra"
       class="pro-table-bar"
       :style="proTableBarStyleComputed"
     >
-      <el-col :span="12">
-        <span v-if="headerTitle" class="title">{{ headerTitle }}</span>
+      <!-- 标题栏 -->
+      <el-col v-if="title" :span="12" class="title">
+        <slot name="title">
+          <span>{{ title }}</span>
+        </slot>
       </el-col>
 
       <!-- 工具区 -->
-      <el-col :span="headerTitle ? 12 : 24">
-        <div class="extra">
-          <div :style="{ marginRight: toolbar ? '14px' : '' }">
-            <slot name="extra" />
-          </div>
-
-          <div v-if="toolbar" class="toolbar">
-            <el-tooltip
-              class="icon"
-              effect="dark"
-              content="刷新"
-              placement="top"
-            >
-              <i class="el-icon-refresh" @click="handleRefresh" />
-            </el-tooltip>
-            <el-tooltip
-              class="icon"
-              effect="dark"
-              content="全屏"
-              placement="top"
-            >
-              <i class="el-icon-full-screen" @click="handleFullScreen" />
-            </el-tooltip>
-          </div>
-        </div>
+      <el-col class="extra" :span="title ? 12 : 24">
+        <slot name="extra" />
       </el-col>
     </el-row>
 
@@ -53,6 +32,7 @@
 
     <!-- 表格分页 -->
     <el-pagination
+      v-if="proPagination"
       class="el-pagination"
       v-bind="proPaginationBindComputed"
       v-on="proPaginationOn"
@@ -71,13 +51,9 @@ export default {
       type: Object,
       default: () => {}
     },
-    headerTitle: {
+    title: {
       type: String,
       default: '高级表格'
-    },
-    toolbar: {
-      type: Boolean,
-      default: false
     },
     /* 表格项 */
     column: {
@@ -98,6 +74,11 @@ export default {
     proTableOn: {
       type: Object,
       default: () => {}
+    },
+    /* 分页是否显示 */
+    proPagination: {
+      type: Boolean,
+      default: true
     },
     /* 绑定分页属性 */
     proPaginationBind: {
@@ -135,23 +116,6 @@ export default {
       const slot = this.$slots.extra
       return slot
     }
-  },
-  mounted() {
-    console.log(this.$slots.extra)
-  },
-  methods: {
-    /* 表格刷新 */
-    handleRefresh() {
-      console.log('refresh')
-      this.$emit('refresh')
-    },
-    /* 表格全屏 */
-    handleFullScreen() {
-      const tableElement = this.$refs['table']
-      if (tableElement.requestFullscreen) {
-        tableElement.requestFullscreen()
-      }
-    }
   }
 }
 </script>
@@ -162,13 +126,6 @@ export default {
   background-color: #ffffff;
 
   .pro-table-bar {
-    // padding: 0 24px;
-    // height: 64px;
-    // display: flex;
-    // align-items: center;
-    // justify-content: space-between;
-    // background-color: #ffffff;
-
     .title {
       font-weight: 500;
       font-size: 16px;
@@ -181,12 +138,6 @@ export default {
       align-items: center;
       justify-content: flex-end;
       overflow: hidden;
-
-      .icon {
-        margin-left: 14px;
-        font-size: 18px;
-        cursor: pointer;
-      }
     }
   }
 
