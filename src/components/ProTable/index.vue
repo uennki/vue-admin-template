@@ -19,12 +19,7 @@
     </el-row>
 
     <!-- 表格主体 -->
-    <el-table
-      :data="dataSource"
-      style="width: 100%"
-      v-bind="proTableBind"
-      v-on="proTableOn"
-    >
+    <el-table :data="dataSource" v-bind="proTableBind" v-on="proTableOn">
       <template v-for="(row, index) in column">
         <ProTableColumn :key="index" :row="row" />
       </template>
@@ -134,10 +129,7 @@ export default {
     }
 
     .extra {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      overflow: hidden;
+      text-align: right;
     }
   }
 
