@@ -73,7 +73,6 @@
 </template>
 
 <script>
-const col = new Map([{}])
 export default {
   name: 'TableSuper',
   props: {

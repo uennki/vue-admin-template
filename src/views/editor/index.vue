@@ -13,7 +13,7 @@ export default {
   },
   data: function() {
     return {
-      content: ''
+      content: '123123'
     }
   }
 }

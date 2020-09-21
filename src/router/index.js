@@ -69,10 +69,16 @@ export const constantRoutes = [
         meta: { title: 'Table', icon: 'nested' }
       },
       {
-        path: 'form',
-        name: 'Form',
-        component: () => import('@/views/form/index'),
-        meta: { title: 'Form', icon: 'nested' }
+        path: 'form-search',
+        name: 'FormSearch',
+        component: () => import('@/views/formSearch/index'),
+        meta: { title: 'FormSearch', icon: 'nested' }
+      },
+      {
+        path: 'form-table',
+        name: 'FormTable',
+        component: () => import('@/views/formTable/index'),
+        meta: { title: 'FormTable', icon: 'nested' }
       },
       {
         path: 'descriptions',
@@ -85,12 +91,6 @@ export const constantRoutes = [
         name: 'Card',
         component: () => import('@/views/card/index'),
         meta: { title: 'Card', icon: 'nested' }
-      },
-      {
-        path: 'form-table',
-        name: 'FormTable',
-        component: () => import('@/views/formTable/index'),
-        meta: { title: 'FormTable', icon: 'nested' }
       },
       {
         path: 'skeleton',

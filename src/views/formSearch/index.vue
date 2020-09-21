@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ProForm
+    <ProFormSearch
       class="form"
       :model="model"
       :column="column"
@@ -44,12 +44,12 @@
   </div>
 </template>
 <script>
-import ProForm from '@/components/ProForm'
+import ProFormSearch from '@/components/ProFormSearch'
 import TableSuper from '@/components/TableSuper'
 
 export default {
   components: {
-    ProForm,
+    ProFormSearch,
     TableSuper
   },
   data() {
