@@ -92,8 +92,7 @@ export default {
 </style>
 <style lang="scss" scoped>
 .pro-form-table-tbody {
-  padding-bottom: 3px;
-  // min-height: 200px;
+  padding-bottom: 24px;
 
   .tr {
     font-size: 12px;
