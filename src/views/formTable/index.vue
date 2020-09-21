@@ -1,5 +1,7 @@
 <template>
   <ProContainer>
+    <ProChinaArea :default-value="value" />
+    <br />
     <ProFormTable :column="column" :form-data="formData" />
   </ProContainer>
 </template>
@@ -7,17 +9,22 @@
 <script>
 import ProContainer from '@/components/ProContainer'
 import ProFormTable from '@/components/ProFormTable/index'
+import ProChinaArea from '@/components/ProChinaArea/index'
+
 export default {
   components: {
     ProContainer,
-    ProFormTable
+    ProFormTable,
+    ProChinaArea
   },
   data: function() {
     return {
+      value: [],
       column: [
         {
           prop: 'id',
-          label: 'id'
+          label: 'id',
+          width: 300
         },
         {
           prop: 'author',
@@ -43,16 +50,7 @@ export default {
           status: 5000,
           author: '李白',
           payTime: '2020-09-11 17:39',
-          display_time: '2020-09-11 21:20',
-          note: ''
-        },
-        {
-          id: 1,
-          code: 'DCK20200911345',
-          status: 5000,
-          author: '李白',
-          payTime: '2020-09-11 17:39',
-          display_time: '2020-09-11 21:20',
+          display_time: '',
           note: ''
         }
       ]

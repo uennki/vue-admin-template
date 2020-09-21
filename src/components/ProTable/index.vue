@@ -63,9 +63,7 @@ export default {
     /* 绑定表格属性 */
     proTableBind: {
       type: Object,
-      default: () => ({
-        border: true
-      })
+      default: () => ({})
     },
     /* 绑定表格事件 */
     proTableOn: {

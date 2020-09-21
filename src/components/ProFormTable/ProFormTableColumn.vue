@@ -19,8 +19,8 @@ export default {
       return {
         display: 'grid',
         gridTemplateColumns: `repeat(${len}, 1fr)`,
-        alignItems: 'center',
-        gridColumnGap: '14px'
+        alignItems: 'center'
+        // gridColumnGap: "14px"
       }
     }
   },
@@ -41,10 +41,14 @@ export default {
       return (
         <div class="tr" key={index} style={this.grideStyle}>
           {this.column.map((item, itemIndex) => {
-            const { label, prop, rules, render } = item
+            const { label, prop, rules, render, width } = item
 
             return (
-              <div class="td" key={`${index}-${itemIndex}`}>
+              <div
+                class="td"
+                style={{ width: `${width}px` }}
+                key={`${index}-${itemIndex}`}
+              >
                 <el-form-item
                   // label={label}
                   prop={`formData[${index}][${prop}]`}
@@ -88,12 +92,18 @@ export default {
 </style>
 <style lang="scss" scoped>
 .pro-form-table-tbody {
+  padding-bottom: 3px;
+  // min-height: 200px;
+
   .tr {
-    border-bottom: 1px solid #ebeef5;
-    height: 50px;
+    font-size: 12px;
 
     .td {
-      padding: 0 14px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #ebeef5;
+      padding: 0 24px;
     }
   }
 }
