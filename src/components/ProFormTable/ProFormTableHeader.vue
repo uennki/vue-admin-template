@@ -43,14 +43,16 @@ export default {
   font-size: 13px;
   font-weight: 500 !important;
   color: rgba(0, 0, 0, 0.85);
+  background-color: #fafafa;
 
   .tr {
     .th {
+      border-bottom: 1px solid #ebeef5;
       padding: 0 24px;
       height: 40px;
       line-height: 40px;
       background-color: #fafafa;
-      border-bottom: 1px solid #ebeef5;
+      // border-bottom: 1px solid #ebeef5;
     }
 
     .required {

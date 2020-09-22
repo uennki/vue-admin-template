@@ -92,16 +92,15 @@ export default {
 </style>
 <style lang="scss" scoped>
 .pro-form-table-tbody {
+  font-size: 12px;
   padding-bottom: 24px;
 
   .tr {
-    font-size: 12px;
-
     .td {
+      border-bottom: 1px solid #ebeef5;
       height: 46px;
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #ebeef5;
       padding: 0 24px;
     }
   }

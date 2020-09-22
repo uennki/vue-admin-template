@@ -28,15 +28,18 @@ export default {
         },
         {
           prop: 'author',
-          label: 'author'
+          label: 'author',
+          width: 300
         },
         {
           prop: 'status',
-          label: 'status'
+          label: 'status',
+          width: 300
         },
         {
           prop: 'display_time',
           label: 'display_time',
+          width: 300,
           rules: { required: true, message: '必填项' },
           render: (h, scoped) => {
             return <el-input v-model={scoped.display_time}></el-input>

@@ -103,6 +103,12 @@ export const constantRoutes = [
         name: 'Editor',
         component: () => import('@/views/editor/index'),
         meta: { title: 'Editor', icon: 'nested' }
+      },
+      {
+        path: 'upload',
+        name: 'Upload',
+        component: () => import('@/views/upload/index'),
+        meta: { title: 'Upload', icon: 'nested' }
       }
     ]
   },
