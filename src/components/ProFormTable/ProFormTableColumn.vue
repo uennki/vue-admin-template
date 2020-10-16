@@ -1,6 +1,6 @@
 <script>
 export default {
-  name: 'ProFormTableColumn',
+  name: "ProFormTableColumn",
   props: {
     column: {
       type: Array,
@@ -15,25 +15,25 @@ export default {
   },
   computed: {
     grideStyle: function() {
-      const len = this.column.length
+      const len = this.column.length;
       return {
-        display: 'grid',
+        display: "grid",
         gridTemplateColumns: `repeat(${len}, 1fr)`,
-        alignItems: 'center'
+        alignItems: "center"
         // gridColumnGap: "14px"
-      }
+      };
     }
   },
   methods: {
     submitForm(formName) {
       this.$refs[formName].validate(valid => {
         if (valid) {
-          alert('submit!')
+          alert("submit!");
         } else {
-          console.log('error submit!!')
-          return false
+          console.log("error submit!!");
+          return false;
         }
-      })
+      });
     }
   },
   render: function(h) {
@@ -41,11 +41,11 @@ export default {
       return (
         <div class="tr" key={index} style={this.grideStyle}>
           {this.column.map((item, itemIndex) => {
-            const { label, prop, rules, render, width } = item
+            const { label, prop, rules, render, width } = item;
 
             return (
               <div
-                class="td"
+                class="td ellipsis"
                 style={{ width: `${width}px` }}
                 key={`${index}-${itemIndex}`}
               >
@@ -57,15 +57,15 @@ export default {
                   {(render && render(h, scoped)) || scoped[prop]}
                 </el-form-item>
               </div>
-            )
+            );
           })}
         </div>
-      )
-    })
+      );
+    });
 
-    return <div class="pro-form-table-tbody">{ProFormItem}</div>
+    return <div class="pro-form-table-tbody">{ProFormItem}</div>;
   }
-}
+};
 </script>
 
 <style lang="scss">
@@ -92,16 +92,24 @@ export default {
 </style>
 <style lang="scss" scoped>
 .pro-form-table-tbody {
-  font-size: 12px;
-  padding-bottom: 24px;
+  padding-bottom: 3px;
+  // padding-bottom: 24px;
 
   .tr {
+    font-size: 12px;
+
     .td {
-      border-bottom: 1px solid #ebeef5;
       height: 46px;
       display: flex;
       align-items: center;
-      padding: 0 24px;
+      border-bottom: 1px solid #ebeef5;
+      padding: 0 14px;
+    }
+
+    .ellipsis {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
   }
 }

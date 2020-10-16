@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'ProFormTableHeader',
+  name: "ProFormTableHeader",
   props: {
     column: {
       type: Array,
@@ -26,16 +26,16 @@ export default {
   },
   computed: {
     grideStyle: function() {
-      const len = this.column.length
+      const len = this.column.length;
       return {
-        display: 'grid',
+        display: "grid",
         gridTemplateColumns: `repeat(${len}, 1fr)`,
-        alignItems: 'center'
+        alignItems: "center"
         // gridColumnGap: "14px"
-      }
+      };
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -43,23 +43,21 @@ export default {
   font-size: 13px;
   font-weight: 500 !important;
   color: rgba(0, 0, 0, 0.85);
-  background-color: #fafafa;
 
   .tr {
     .th {
-      border-bottom: 1px solid #ebeef5;
-      padding: 0 24px;
+      padding: 0 14px;
       height: 40px;
       line-height: 40px;
       background-color: #fafafa;
-      // border-bottom: 1px solid #ebeef5;
+      border-bottom: 1px solid #ebeef5;
     }
 
     .required {
       position: relative;
 
       &::before {
-        content: '*';
+        content: "*";
         color: #f56c6c;
         margin-right: 4px;
       }
